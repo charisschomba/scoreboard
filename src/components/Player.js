@@ -7,11 +7,10 @@ export class Player extends PureComponent {
             name,
             id,
             index,
-            changeScore,
             score,
             handleIncrement,
             removePlayer
-        } = this.props
+        } = this.props;
         return (
         <div className="player">
         <span className="player-name">
@@ -20,7 +19,6 @@ export class Player extends PureComponent {
     </span>
         < Counter
         index={index}
-        changeScore={changeScore}
         score={score}
         handleIncrement={handleIncrement}
         />

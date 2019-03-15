@@ -1,6 +1,6 @@
 import React, { createContext } from 'react';
 
-const scoreBoard = createContext({});
+const scoreBoardContext = createContext({});
 
-export const scoreBoardProvider = scoreBoard.Provider;
-export const scoreBoardConsumer = scoreBoard.Consumer;
+export const Provider = scoreBoardContext.Provider;
+export const Consumer = scoreBoardContext.Consumer;

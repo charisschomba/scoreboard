@@ -3,6 +3,8 @@ import './App.css';
 import { Header} from "./components/Header";
 import { Player } from "./components/Player"
 import AddPlayerForm from './components/AddPlayerForm'
+import { Provider } from "./context";
+import PlayerList from './components/PlayerList'
 
 class App extends Component {
   state = {
@@ -48,6 +50,7 @@ class App extends Component {
     prevPlayerId = 4;
 
     handleAddPlayer = (name) => {
+        console.warn(this.state)
         this.setState(prevState => {
             return {
                 players: [
@@ -62,28 +65,20 @@ class App extends Component {
 };
 
   render() {
-    const {title, players} = this.state;
     return (
+        <Provider value={{
+            players:this.state.players,
+            changeScore: this.handleChangeScore,
+            removePlayer: this.handleRemovePlayer,
+            title: this.state.title,
+            addPlayer: this.handleAddPlayer,
+        }}>
         <div className="scoreboard">
-          <Header
-              title={title}
-              players ={players}
-          />
-            {players.map((player, index) =>(
-                <Player
-                    changeScore={this.handleChangeScore}
-                    id={player.id}
-                    index={index}
-                    score={player.score}
-                    removePlayer={this.handleRemovePlayer }
-                    key={player.id.toString()}
-                    name={player.name}
-                />
-            ))}
-            <AddPlayerForm
-                addPlayer={this.handleAddPlayer}
-            />
+            <Header />
+            <PlayerList />
+            <AddPlayerForm />
         </div>
+        </Provider>
 
     );
   }
