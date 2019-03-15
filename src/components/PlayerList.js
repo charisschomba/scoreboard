@@ -4,16 +4,11 @@ import { Consumer } from "../context";
 
 const PlayerList = () => (
     <Consumer>
-        {context => (
-            context.players.map((player, index) =>(
+        {({players}) => (
+            players.map((player, index) =>(
                 <Player
-                    changeScore={context.changeScore}
-                    id={player.id}
                     index={index}
-                    score={player.score}
-                    removePlayer={context.removePlayer }
                     key={player.id.toString()}
-                    name={player.name}
                 />
             )))
         }

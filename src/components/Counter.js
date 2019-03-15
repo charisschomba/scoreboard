@@ -5,11 +5,11 @@ export const Counter = ({score, index}) => {
 
     return (
         <Consumer>
-            {context => (
+            {({changeScore, players}) => (
                 <div className="counter">
-                    <button className="counter-action decrement" onClick={() => context.changeScore(index, -1)}> - </button>
-                    <span className="counter-score"> {score} </span>
-                    <button className="counter-action increment" onClick={() => context.changeScore(index, +1)}> + </button>
+                    <button className="counter-action decrement" onClick={() => changeScore(index, -1)}> - </button>
+                    <span className="counter-score"> {players[index].score} </span>
+                    <button className="counter-action increment" onClick={() => changeScore(index, +1)}> + </button>
                 </div>
             )}
         </Consumer>
